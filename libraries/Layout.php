@@ -109,9 +109,9 @@ class Layout {
      * @return	void
      */
     public function render_nav($nav = array()) {
-        $this->CI->load->library('menu');
-        $this->CI->menu->initialize(array(
-            'container_tag_class' => $this->nav_class,
+        $this->CI->load->library('nav');
+        $this->CI->nav->initialize(array(
+            'ul_class' => $this->nav_class,
                 ));
         $page_id = isset($this->page_id) ? $this->page_id : $this->CI->router->fetch_page_id();
         return $this->CI->menu->render($nav, $page_id);

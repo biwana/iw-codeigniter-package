@@ -23,4 +23,4 @@ $layout['default']['default_css'] = array(
     'layout.css',
 );
 
-$layout["default"]['nav_class'] = "nav navbar-nav navbar-right top-bar";
+$layout["default"]['nav_class'] = "nav navbar-right top-bar";
