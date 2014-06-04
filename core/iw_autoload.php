@@ -1,8 +1,8 @@
 <?php
 
-spl_autoload_register('Iwana::autoload');
+spl_autoload_register('IW_Autoload::autoload');
 
-class Iwana {
+class IW_Autoload {
 
     public static function autoload($class) {
         $found = false;

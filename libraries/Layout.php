@@ -27,7 +27,7 @@ class Layout {
         $this->CI->load->library('flash');
         $this->title[] = $this->CI->config->item('app_name');
         $this->nav = $this->CI->config->item('nav');
-        include(APPPATH . 'third_party/iwana/config/layouts' . EXT);
+        include(APPPATH . 'third_party/iw/config/layouts' . EXT);
         if (isset($layout)) {
             $this->config = $layout;
             $this->nav_class = isset($this->config[$this->layout]['nav_class']) ? $this->config[$this->layout]['nav_class'] : '';
