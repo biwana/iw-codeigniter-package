@@ -114,7 +114,7 @@ class Layout {
             'ul_class' => $this->nav_class,
                 ));
         $page_id = isset($this->page_id) ? $this->page_id : $this->CI->router->fetch_page_id();
-        return $this->CI->menu->render($nav, $page_id);
+        return $this->CI->nav->render($nav, $page_id);
     }
 
     /**
