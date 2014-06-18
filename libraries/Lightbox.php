@@ -34,24 +34,25 @@ class Lightbox {
      * @param       bool
      * @return	string
      */
-    function render($src = '', $index_page = FALSE) {
+    function render($src = '', $index_page = FALSE, $additional = '') {
         $link = array();
         if (is_array($src)) {
             $link = $src;
             $link['class'] = isset($src['class']) ? $src['class'] . ' img-responsive' : 'img-responsive';
             $title = isset($src['title']) ? $src['title'] : '';
+            $data_title = isset($src['data-title']) ? $src['data-title'] : $title;
             $url = isset($src['src']) ? $src['src'] : '';
             $link['src'] = isset($src['thumb']) ? $src['thumb'] : $url;
             unset($link['thumb']);
         } else {
             $link['class'] = 'img-responsive';
             $link['src'] = $src;
-            $title = '';
+            $title = $data_title = '';
             $url = $src;
         }
         $image = img($link, $index_page);
         return <<<EOF
-        <a href="$url" data-toggle="lightbox" data-title="$title" class="thumbnail">
+        <a href="$url" data-toggle="lightbox" data-title="$data_title" $additional>
             $image
         </a>
 EOF;
