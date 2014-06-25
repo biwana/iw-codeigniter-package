@@ -13,6 +13,8 @@ class Layout {
 
     protected $CI;
     protected $title = array();
+    protected $app_name = '';
+    protected $keywords = array();
     protected $layout = 'default';
     protected $js = array();
     protected $css = array();
@@ -25,7 +27,7 @@ class Layout {
     public function __construct() {
         $this->CI = & get_instance();
         $this->CI->load->library('flash');
-        $this->title[] = $this->CI->config->item('app_name');
+        $this->app_name = $this->CI->config->item('app_name');
         $this->nav = $this->CI->config->item('nav');
         include(APPPATH . 'third_party/iw/config/layouts' . EXT);
         if (isset($layout)) {
@@ -56,13 +58,40 @@ class Layout {
      * @return	string
      */
     public function get_title() {
-        return implode(' | ', array_reverse($this->title));
+        return implode(' | ', array_merge($this->title, array($this->app_name)));
+    }
+    
+    /**
+     * Keywords
+     *
+     * This function sets the keywords
+     *
+     * @access	public
+     * @param	string
+     * @return	void
+     */
+    public function keywords($keywords) {
+        foreach ($keywords as $i => $k) {
+            $this->keywords[$i] = $k;
+        }
+    }    
+
+    /**
+     * Get Keywords
+     *
+     * This function retrieves the keywords
+     *
+     * @access	public
+     * @return	string
+     */
+    public function get_keywords() {
+        return implode(', ', $this->keywords);
     }
 
     /**
      * Set Layout
      *
-     * This function sets the title
+     * This function sets the layout
      *
      * @access	public
      * @param	string
@@ -130,6 +159,7 @@ class Layout {
     public function render_layout($args = array()) {
 
         $args['title'] = $this->get_title();
+        $args['keywords'] = $this->get_keywords();
         $args['css'] = $this->get_css();
         $args['js'] = $this->get_js();
         $args['content'] = isset($args['content']) ? $args['content'] : '';
