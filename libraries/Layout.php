@@ -56,7 +56,7 @@ class Layout {
      * @return	string
      */
     public function get_title() {
-        return implode(' | ', $this->title);
+        return implode(' | ', array_reverse($this->title));
     }
 
     /**
