@@ -24,3 +24,15 @@ $layout['default']['default_css'] = array(
 );
 
 $layout["default"]['nav_class'] = "nav navbar-right top-bar";
+
+$layout['blank']['default_js'] = array(
+    '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
+    'bootstrap.min.js',
+    'layout.js',
+);
+
+$layout['blank']['default_css'] = array(
+    'reset.css',
+    'bootstrap.min.css',
+    'layout.css',
+);
